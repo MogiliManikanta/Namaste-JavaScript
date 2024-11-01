@@ -432,51 +432,76 @@ close();
 - b is passed as an argument to outer, and c is defined in the scope of outest.
 Thus, the output correctly logs the values of a, b, and c.
 
+## Examples of Data Encapsulation
 
+### Example 1: Basic Counter with Closure
 
-
-
-
-**Data Encapsulation**
-function counter(){
-var count =0;
-function incrementFunction(){
-counter++;
-}
-}
-console(counter);// referenceerror : count is not defined
-
-function counter(){
-var count =0;
-return function incrementFunction(){
-count++;
-console.log(count);
-}
+```javascript
+function counter() {
+  var count = 0;
+  function incrementFunction() {
+    count++;
+    console.log(count);
+  }
+  return incrementFunction;
 }
 
 var counter1 = counter();
-counter1();//1
-counter1();//2
+counter1(); // Output: 1
+counter1(); // Output: 2
 
 var counter2 = counter();
-counter2();//1
+counter2(); // Output: 1
+```
 
-//function constructor
-function Counter(){
-var count = 0;
-this.incrementFunction = function(){
-count++;
-console.log(count);
+### Explanation
+
+In this example:
+- The variable `count` is enclosed within the `counter` function and can't be accessed directly from outside.
+- Each call to `counter` creates a new instance of `count`, preserving its own state across multiple calls.
+
+### Example 2: Using Function Constructor for Counter
+
+```javascript
+function Counter() {
+  var count = 0;
+  
+  this.incrementFunction = function() {
+    count++;
+    console.log(count);
+  };
+  
+  this.decrementFunction = function() {
+    count--;
+    console.log(count);
+  };
 }
-this.decrementFunction = function(){
-count--;
-console.log(count);
-}
-}
+
 var counter1 = new Counter();
-counter1.incrementFunction();
-counter1.incrementFunction();
-counter1.decrementFunction();
+counter1.incrementFunction(); // Output: 1
+counter1.incrementFunction(); // Output: 2
+counter1.decrementFunction(); // Output: 1
+```
+
+### Explanation
+
+Here:
+- The `Counter` constructor function creates private variables by defining `count` inside its scope.
+- Both `incrementFunction` and `decrementFunction` have access to `count` but encapsulate it, so it’s hidden from outside access.
+
+## Key Concepts in JavaScript Closures and Data Encapsulation
+
+1. **Closures for Data Hiding**: A closure allows a function to retain access to its lexical scope even after the outer function has completed. This helps with encapsulation and data hiding.
+
+2. **Garbage Collection**:
+   - Unused variables are deleted by JavaScript’s garbage collector.
+   - However, closures can sometimes allocate memory that isn’t deleted immediately, which may impact memory usage.
+   - Some modern browsers have optimized garbage collection to better handle closures.
+
+## Additional Notes
+
+- **Direct Invocation of Inner Functions**: Inner functions in JavaScript can be called immediately by using `()` twice, like this: `someFunction()()`.
+- **Passing Parameters to Inner Functions**: Parameters can also be passed in this way, but remember that the inner function needs to be returned to allow direct invocation.
 
 1. An inner function can be directly called using two parenthesis ()().
 2. Even parameters can be passed this way (Remember that the function needs to be returned to do this)
