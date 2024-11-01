@@ -319,86 +319,123 @@ function a() {
 - 7.Iterators 
 - 8.and many more
 
+# SetTimeout + Closures Interview Questions 🔥
 
-**setTimeout + Closures Interview Question 🔥**
-function x(){
-for(var i=1;i<=5;i++){
-setTimeout(function(){
-console.log(i);
-},i\*1000);
-}
-console.log("Namaste JavaScript");
+## Question 1: Understanding `setTimeout` with `var`
+
+### Code Snippet:
+```javascript
+function x() {
+    for (var i = 1; i <= 5; i++) {
+        setTimeout(function() {
+            console.log(i);
+        }, i * 1000);
+    }
+    console.log("Namaste JavaScript");
 }
 x();
-output:
 Namaste JavaScript
-6 6 6 6 6
+6
+6
+6
+6
+6
+```
+**Explanation:**
+In this code, the for loop completes before any of the setTimeout callbacks execute. Since var is function-scoped, the value of i is 6 when the callbacks are executed, leading to the output of 6 five times.
 
-function x(){
-for(let i=1;i<=5;i++) {
-setTimeout(function(){
-console.log(i);
-},i\*1000);
-}
-console.log("Namaste JavaScript");
+## Question 2: Understanding setTimeout with let
+```javascript
+function x() {
+    for (let i = 1; i <= 5; i++) {
+        setTimeout(function() {
+            console.log(i);
+        }, i * 1000);
+    }
+    console.log("Namaste JavaScript");
 }
 x();
-output:
-Namaste JavaScript
-1 2 3 4 5
 
-function x(){
-for(var i=1;i<=5;i++) {
-function close(x) {
-setTimeout(function (){
-console.log(x);
-},x\*1000);
-}
-close(i);
-}
-console.log("Namaste JavaScript");
+Namaste JavaScript
+1
+2
+3
+4
+5
+```
+Here, let creates a new block scope for each iteration of the loop. As a result, each setTimeout callback retains the correct value of i for that particular iteration.
+
+## Question 3: Using a Closure to Capture i
+``` 
+function x() {
+    for (var i = 1; i <= 5; i++) {
+        function close(x) {
+            setTimeout(function() {
+                console.log(x);
+            }, x * 1000);
+        }
+        close(i);
+    }
+    console.log("Namaste JavaScript");
 }
 x();
-output :
 Namaste JavaScript
-1 2 3 4 5
+1
+2
+3
+4
+5
+```
 
-A small quiz:
-"closures keep reference not the actual value" (repeat it 10 times) and guess the output of below snippet
-
-for(var i=1; i<=5; i++) {
-setTimeout(() => {
-console.log(i);
-i = i + 1;
-}, i\*1000);
+ ## Quiz: Understanding Closures and References
+**Statement:**
+`Closures keep reference, not the actual value.` **(Repeat it 10 times)**
+```
+for (var i = 1; i <= 5; i++) {
+    setTimeout(() => {
+        console.log(i);
+        i = i + 1;
+    }, i * 1000);
 }
-console.log("outside: ", i)
-if( i < 10 ) i = 10;
+console.log("outside: ", i);
+if (i < 10) i = 10;
 
-outside:6 // The for loop get executed before the setTimeout func  
+outside:  6
 10
 11
 12
 13
 14
-//after the for loop execution now the " i " value become 10 and the value in settimeout has the value 10 beacuse of lexical scope .
+```
+The for loop executes completely before any setTimeout function runs. By the time the callbacks execute, i is 6. The value of i is incremented in each callback due to the closure keeping a reference to i.
 
-function outest(){
-var c=20;
-function outer(b) {
-function inner() {
-console.log(a,b,c);
+## Question 4: Nested Functions and Closures
+```
+function outest() {
+    var c = 20;
+    function outer(b) {
+        function inner() {
+            console.log(a, b, c);
+        }
+        let a = 10;
+        return inner;
+    }
+    return outer;
 }
-let a=10;
-return inner;
-}
-return outer;
-}
-//let a=100;
+
 var close = outest()("hello world");
 close();
+10 hello world 20
+```
+**Explanation:**
+- The variable a is defined inside the outer function's scope and is accessible in the inner function.
+- b is passed as an argument to outer, and c is defined in the scope of outest.
+Thus, the output correctly logs the values of a, b, and c.
 
-output : 10 hello world 20
+
+
+
+
 
 **Data Encapsulation**
 function counter(){
