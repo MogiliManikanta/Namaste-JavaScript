@@ -511,18 +511,21 @@ Here:
 
 # FIRST CLASS FUNCTIONS 🔥ft. Anonymous Functions**
 **Function Statement**
-```function a(){
+```
+function a(){
 console.log("a called"")
 }
 ```
 **Function declaration**
-```var b = function () {
+```
+var b = function () {
 console.log("b called")
 }
 ```
 **Difference between function statement and function declaration**
 difference in them is Hoisting
-```a()//output is a called
+```
+a()//output is a called
 b()//typeError
 function a(){
 console.log("a called"")
@@ -533,21 +536,24 @@ console.log("b called")
 ```
 **Anonymous Functions**
 Anonymous functions are functions that functions used as values
-``` function () {
+```
+function () {
 
 }//syntax error function statement require a function name
 var b = function (){}
 ```
 **Named function Expression**
 ormal function with its name assigned to a variable !!In this case you cannot call function by its name in outer scope!! (Scope Chain)
-``` var b = function xyz(){
+```
+var b = function xyz(){
 console.log("b called");
 }
 b()//b called
 xyz()//error reference error xyz is not defined
 ```
 **Difference between parameters and arguments**
-``` function a(param1,param2){
+```
+function a(param1,param2){
 
 }
 var ab=a(arg1,arg2);
