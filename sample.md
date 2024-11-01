@@ -201,106 +201,69 @@ The **Scope Chain** mechanism ensures that the JavaScript engine can access vari
 Using `const` and `let` effectively helps prevent runtime errors and maintains clean code structure by reducing reliance on the global execution context and minimizing unintentional variable mutations.
 `;
 
+# Block Scope & Shadowing in JavaScript 🔥
 
-**BLOCK SCOPE & Shadowing in JS 🔥**
+### What is a Block in JavaScript?
+A **block** in JavaScript is a group of statements enclosed in curly brackets `{ }`, allowing multiple statements to be executed as one.
 
-Q) What is block in JavaScript?
+### Why Use Blocks?
+JavaScript sometimes expects a single statement to execute. Blocks allow us to group multiple statements together, letting them run in cases where only a single statement is expected (e.g., in `if`, `else`, loops, and functions).
 
-> multiple js statements formed in a group enclosed in brackets and it forms a block
+### Scope and Block Scope
+- **Scope**: The area where a variable or function is accessible.
+- **Block Scope**: Variables declared within a block (using `let` or `const`) are confined to that block and follow the **lexical scope chain** when accessed.
+- Variables declared with `let` and `const` are **block-scoped**, while `var` variables are **global-scoped** or **function-scoped**.
 
-Q) What is need of a block/Grouping?
+### Hoisting with let, const, and var
+- **let & const**: Hoisted within their block scope but are inaccessible before initialization due to the **Temporal Dead Zone (TDZ)**.
+- **var**: Hoisted globally or to the nearest function scope, so it can be accessed outside the block where it’s defined.
 
-> JavaScript sometimes expect to run a single statement to run, but we need to run commands with multiple statements which is only possible by block
+### Shadowing
+**Variable Shadowing** occurs when a variable in an inner scope has the same name as a variable in an outer scope, effectively hiding the outer variable within that inner scope.
 
-eg. on 4:14
-
-write a simple function:
-// even empty script is perfectly valid js script, what about empty brackets!!
-{
-var a = 10;
-let b = 20;
-const c =30;
+**Example 1: Shadowing with `let` and `const`**
+```javascript
+let x = 10; // Outer scope
+function example() {
+    let x = 20; // Shadows outer x
+    console.log(x); // Prints 20
 }
+example();
+console.log(x); // Prints 10
+```
 
-When a js script get hoisted (a Global Execution Context) gets created 'var' listed towards 'Global environment' and other variables 'let' and 'const' declarations go to the 'Block environment'
+### Illegal Shadowing
+Shadowing a `let` or `const` variable with `var` is considered **illegal shadowing** because `var` is global or function-scoped, while `let` and `const` are block-scoped. Attempting to redeclare a `let` variable with `var` causes a syntax error.
 
-This become especially important when deciding the scope of a particular variable, since b and c are located in 'Block environment' and for a as we know exists in 'Global environment' any statement out of the "Block" can access 'a' ie. ' Variable in Global environment' and other are not!
-
-so when we understand the extent of Global and local environment variables and their 'Scopes' == Environment that forms the lexical hierarchy of 'Scopes' and 'Scopes' have Levels like 'Scope inside scope'
-
-see script in 7:03
-
-var a = 100;
-{
-var a = 10;
-let b = 20;
-const c =30;
-console.log(a);
-console.log(b);
-console.log(c);
-}
-console.log(a);
-console.log(b);
-console.log(c);
-
-So in block " var a = 10;" influences the value within the block hence console.log(a); >> 10 and outside of the block 'Variable in Global environment' influences value of a hence console.log(a); >> 100
-
-Illegal shadowing:
-
+**Example of Illegal Shadowing**
+```javascript
 let a = 200;
 {
-var a =20;
+    var a = 20; // SyntaxError: Identifier 'a' has already been declared
 }
-for the above one
-// let var => wrong
-let let =>right
-const aonst=>right
+```
 
-as 'var' declaration goes to 'Global environment' and sets in Memory context, it cannot be set using 'Block environment' value Hence: Uncaught SyntaxError: Identifier 'a' has already been declared
+### Example 2: Overwriting with `var`
+Variables declared with `var` inside a block can override outer variables of the same name due to lack of block scope.
 
-Block :- It is used to combine multiple statement into one statement so that we can use it at those places where javascript expects to have single statement.
-Scope :- scope of a variable or a function is the place where these are accessible.
-Block scope :- The variables and function present within the scope of a block section. And block follows the lexical scope chain pattern while accessing the variable.
-Shadowing :- Providing same name to the variable as of those variable which are present in outer scope.
-
-1. Code inside curly bracket is called block.
-2. Multiple statements are grouped inside a block so it can be written where JS expects single statements like in if, else, loop, function etc.
-3. Block values are stored inside separate memory than global. They are stored in block. (the reason let and const are called block scope)
-4. Shadowing of variables using var, let and const.
-5. The shadow should not cross the scope of original otherwise it will give error.
-6. shadowing let with var is illegal shadowing and gives error.
-7. var value is stored in nearest outer function or global scope and hence can be accessed outside block as well whereas same is not the case with let and const.
-   Key Learnings
-
-Block is also known as Compound statements. It is used to combine the multiple statements together
-
-let & const are hoisted in a block scope. var is in global scope
-
-let and const variables are stored in block space, so it is called block-scoped but var variables can be accessed outside the block as it is stored in the Global object memory space, hence it is called Global scoped.
-
-Variable shadowing occurs when a variable declared in an inner scope has the same name as a variable in an outer scope, effectively hiding the outer variable within that scope.
-
-Example 1:
-let x = 10; // Outer scope variable
-function example() {
-let x = 20; // Inner scope variable, shadows outer 'x'
-console.log(x); // Prints 20
-}
-example(); //function call
-console.log(x); // Prints 10
-
-Example 2:
+```javascript
 var a = 199;
 {
-var a = 10;
+    var a = 10; // Overrides outer 'a'
 }
-console log(a);
+console.log(a); // Prints 10
+```
 
-variables declared with var are function-scoped or globally scoped, but they are not block-scoped like variables declared with let or const. So, the var a declared inside the block {} will override the outer var a declaration, and the value of a will be 10 when logged outside the block.
+### Key Points:
+- **Block (Compound Statement)**: Groups multiple statements together.
+- **Global Environment**: `var` variables reside here, allowing access outside blocks.
+- **Block Environment**: `let` and `const` reside here, providing block-level scope.
+- Use `let` and `const` inside blocks to avoid conflicts and ensure block-specific variables.
+- Variable shadowing helps manage variables at different scope levels but requires careful usage to avoid illegal shadowing.
 
-var variable of function scoped overwrites the value of Global Scoped variable.
+---
 
-Scope for arrow function is also same
+JavaScript block scope, shadowing, and lexical environments ensure code behaves predictably in nested contexts. Using `let` and `const` helps prevent accidental variable access and keeps code cleaner.
 
 **Closures in JS 🔥**
 
