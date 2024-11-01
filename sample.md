@@ -265,52 +265,60 @@ console.log(a); // Prints 10
 
 JavaScript block scope, shadowing, and lexical environments ensure code behaves predictably in nested contexts. Using `let` and `const` helps prevent accidental variable access and keeps code cleaner.
 
-**Closures in JS 🔥**
+# Closures in JS 🔥
 
-Closure :Function bundled with its lexical environment is known as a closure. Whenever function is returned, even if its vanished in execution
-context but still it remembers the reference it was pointing to. Its not just that function alone it returns but the entire closure and that's
-where it becomes interesting
-function a (){
-
-function b{
-let x = 3;
-}
-function c{
-let y = 4;
-}
-function d{
-console.log(x,y)
-}
-}
-now how to change this code to access the x and y variables inside d(), I simply told change let to var, but the suggested answer was we can
-write like below
-
-function a (){
-function b{
-let x = 3;
-function c{
-let y = 4;
-function d{
-console.log(x,y)
-}
-}
-}
+**Closure :**
+ - Function bundled with its lexical environment is known as a closure. Whenever function is returned, even if its vanished in execution context but still it remembers the reference it was pointing to. Its not just that function alone it returns but the entire closure and that's where it becomes interesting 
+ ```javascript
+ function a() {
+    function b() { 
+        let x = 3; 
+    } 
+    function c() { 
+        let y = 4; 
+    } 
+    function d() { 
+        console.log(x, y); // This will throw a ReferenceError
+    } 
 }
 
-1. Function bundled with lexical scope is called closure.
-2. Even if we return the function, it still remembers its original lexical environment and local storage so it can access values.
-3. If we write return function x(){.....} --- this automatically returns the value.
-4. The function that is returned is reference so any change in value of that variable inside function will be reflected as such.
+```
+- now how to change this code to access the x and y variables inside d(), I simply told change let to var, but the suggested answer was we can write like below
+
+ - In this code, trying to access x and y inside function d() will result in an error because d() does not have access to the variables defined in b() and c().
+
+ - To allow d() to access x and y, you can restructure the functions as follows:
+``` javascript
+function a() {
+    function b() { 
+        let x = 3; 
+        return x; // Returning x
+    } 
+    function c() { 
+        let y = 4; 
+        return y; // Returning y
+    } 
+    function d() { 
+        console.log(b(), c()); // Now it can access x and y
+    } 
+}
+```
+**Key Points :** 
+-  Function bundled with lexical scope is called closure.
+- Even if we return the function, it still remembers its original lexical environment and local storage so it can access values.
+- If we write return function x(){.....} --- this automatically returns the value.
+- The function that is returned is reference so any change in value of that variable inside function will be reflected as such.
 
 **Uses of Closures :**
-1.Module Design pattern
-2.Currying
-3.Functions like once
-4.memoize
-5.maintaing state in async world
-6.setTimeouts
-7.Iterators
-8.and many more
+- 1.Module Design pattern 
+- 2.Currying 
+- 3.Functions like once 
+- 4.memoize 
+- 5.maintaing state in async world 
+- 6.setTimeouts 
+- 7.Iterators 
+- 8.and many more
+
 
 **setTimeout + Closures Interview Question 🔥**
 function x(){
