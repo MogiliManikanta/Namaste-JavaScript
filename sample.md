@@ -159,27 +159,48 @@ Each lexical environment is defined as:
 
 The **Scope Chain** mechanism ensures that the JavaScript engine can access variables and functions up through the chain of lexical environments, adhering to a structured and sequential search hierarchy.
 `;
-**let & const in JS 🔥Temporal Dead Zone**
 
--> let and const are hoisted. we cant use them before initialization is result of "temporal dead zone".
--> js use diff memory than global execution context to store let and cost. which is reason behind "temporal dead zone"
--> level of strictness ... var<<let<<const.
--> var //no temporal dead zone, can redeclare and re-initialize, stored in GES
-let //use TDZ, can't re-declare, can re-initialize, stored in separate memory
-const //use TDZ, can't re-declare, can't re-initialize, stored in separate memory
--> syntax error is similar to compile error. while type and reference error falls under run time error.
--> syntax error ... violation of JS syntax
-type error ... while trying to re-initialize const variable
-reference error ... while trying to access variable which is not there in global memory.
+# let & const in JavaScript 🔥 Temporal Dead Zone
 
-1. let and const are hoisted but its memory is allocated at other place than window which cannot be accessed before initialisation.
-2. Temporal Dead Zone exists until variable is declared and assigned a value.
-3. window.variable OR this.variable will not give value of variable defined using let or const.
-4. We cannot redeclare the same variable with let/const(even with using var the second time).
-5. const variable declaration and initialisation must be done on the same line.
-6. There are three types of error: [1] referenceError {given where variable does not have memory allocation} [2] typeError {given when we change type that is not supposed to be changed} [3] syntaxError {when proper syntax(way of writing a statement) is not used}.
-7. Use const wherever possible followed by let, Use var as little as possible(only if you have to). It helps avoid error.
-8. Initialising variables at the top is good idea, helps shrinks TDZ to zero.
+### Key Concepts of `let` and `const`:
+- `let` and `const` are **hoisted**, but they cannot be accessed before initialization, resulting in the **Temporal Dead Zone (TDZ)**.
+- JavaScript uses a different memory space than the **Global Execution Context (GEC)** to store variables declared with `let` and `const`, which causes the TDZ.
+- Levels of strictness: `var` < `let` < `const`.
+
+### Characteristics:
+- **var**: 
+  - No Temporal Dead Zone.
+  - Can be redeclared and re-initialized.
+  - Stored in the **Global Execution Context** (GES).
+- **let**:
+  - Uses TDZ.
+  - Cannot be redeclared but can be re-initialized.
+  - Stored in a separate memory.
+- **const**:
+  - Uses TDZ.
+  - Cannot be redeclared or re-initialized.
+  - Stored in a separate memory.
+
+### Temporal Dead Zone (TDZ)
+- TDZ exists for variables declared with `let` and `const` until they are assigned a value.
+- Variables declared with `let` or `const` do not become properties of the global `window` object, so accessing them as `window.variable` or `this.variable` will not work.
+- The TDZ prevents accessing `let` or `const` variables before their declaration, resulting in a ReferenceError.
+
+### Error Types in JavaScript
+1. **SyntaxError**: Occurs when JavaScript syntax is violated (similar to compile-time errors).
+2. **ReferenceError**: Happens when attempting to access a variable that has no memory allocation (like accessing a variable in TDZ).
+3. **TypeError**: Raised when trying to reinitialize a `const` variable or performing an operation on a type that is not allowed.
+
+### Best Practices:
+- Always use `const` whenever possible, followed by `let`. Avoid using `var` unless absolutely necessary.
+- Declaring variables at the top of their scope helps shrink the Temporal Dead Zone to zero.
+- **`const`** requires declaration and initialization to occur on the same line.
+
+---
+
+Using `const` and `let` effectively helps prevent runtime errors and maintains clean code structure by reducing reliance on the global execution context and minimizing unintentional variable mutations.
+`;
+
 
 **BLOCK SCOPE & Shadowing in JS 🔥**
 
