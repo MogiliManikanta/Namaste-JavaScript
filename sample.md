@@ -622,19 +622,18 @@ Can be passed as an Argument,Can be executed inside a closured function &    Can
                                      console.log(" F C F ");
                              }
                      }
-
-```
+                     ```
 
 7. Function are heart of JS. They are called first class citizens or first class functions because they have the ability to be stored in the variables, passed as parameters and arguments. They can also be returned in the function.
 
 For Revision
 
 **Function statement / Function Declaration : the function is normally defined and can be used later on**
-**Function expression : the function is first created and assigned to a variable so that it can be called by its variable name and unless it is defined, it cannot be executed otherwise it throws out "Uncaught TypeError"
+**Function expression : the function is first created and assigned to a variable so that it can be called by its variable name and unless it is defined, it cannot be executed otherwise it throws out "Uncaught TypeError"**
 
-Anonymous function : function where there is no need to define name for the function, it just can be assigned to variable
+**Anonymous function : function where there is no need to define name for the function, it just can be assigned to variable**
 
-Named function : Normal function with its name assigned to a variable !!In this case you cannot call function by its name in outer scope!! (Scope Chain)
+**Named function : Normal function with its name assigned to a variable !!In this case you cannot call function by its name in outer scope!! (Scope Chain)**
 
 first class Functions / first class citizens :
 
@@ -644,20 +643,24 @@ first class Functions / first class citizens :
 4. can be taken as return
 
 **Callback Functions in JS ft. Event Listeners 🔥**
+
+```
 setTimeout(function () {
 console.log("timer");
 },5000);
 
 function x(y){
-console.log("x);
-y();
+  console.log("x);
+  y();
 }
 x(function y() {
-console.log("y");
+  console.log("y");
 });
+```
 
 **EventListeners**
-""function attachEventListeners() {""
+```
+function attachEventListeners() {""
 let count=0;
 document.getElementById("click", function xyz(){
 console.log("button clicked",++count);
@@ -665,33 +668,34 @@ console.log("button clicked",++count);
 }""
 attachEventListeners();
 <button id="click">click me </button>
-
-1. Function that is passed on as argument to another function is called callback function.
-2. setTimeout helps turn JS which is sinhlethreaded and synchronous into asynchronous.
-3. Event listeners can also invoke closures with scope.
-4. Event listeners consume a lot of memory which can potentially slow down the website therefore it is good practice to remove if it is not used.
+```
+- 1. Function that is passed on as argument to another function is called callback function.
+- 2. setTimeout helps turn JS which is sinhlethreaded and synchronous into asynchronous.
+- 3. Event listeners can also invoke closures with scope.
+- 4. Event listeners consume a lot of memory which can potentially slow down the website therefore it is good practice to remove if it is not used.
 
 we already know that function are first class citizens in JavaScript.
 that means we can take a function and pass it to another function.
 when we a pass a function to another function, whatever the function that we are passing as an argument that we call it as call back function.
 
 Example:-
-
+```
 function x(y) {
-console.log("x");
-y();
+  console.log("x");
+  y();
 }
 x(function y() {
-console.log("y");
+  console.log("y");
 });
-
+```
 in the above example function y is the call back function to the function x.
 in the above example it is up to function x on when it wants to execute function y, means in the code function y will get called by function x after some time, that’s the reason we got the naming convention as call back function , these function will get called after a while back.
 
+```
 setTimeout(function a() {
 console.log("Hi")
 }, 5000)
-
+```
 in the above example function a() is the call back function to the function setTimeout.
 
 these call back functions are very powerful in JavaScript.
