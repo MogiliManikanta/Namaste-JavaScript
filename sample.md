@@ -47,7 +47,7 @@ When `third()` is called, it gets pushed onto the stack. Within `third()`, `seco
 
 
 
-**How JavaScript Code is executed?**
+###How JavaScript Code is executed?
 
 1. Whenever any JavaScript code is executed an execution context is created and it is the Global Execution Context.
 2. An Execution Context is basically a box which has two components called Memory Component(Variable Environment) and Code Component(Thread Of Execution).
