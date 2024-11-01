@@ -509,20 +509,20 @@ Here:
 4. Unused variables are automatically deleted in High Level Programming language by garbage collector. Closures allocate a lot of memory which cannot be deleted so this acts as a disadvantage.
 5. Some browsers now have smart garbage collectors that automatically deletes variables that are not used outside closures.
 
-**FIRST CLASS FUNCTIONS 🔥ft. Anonymous Functions**
+# FIRST CLASS FUNCTIONS 🔥ft. Anonymous Functions**
 **Function Statement**
-function a(){
+```function a(){
 console.log("a called"")
 }
-
+```
 **Function declaration**
-var b = function () {
+```var b = function () {
 console.log("b called")
 }
-
+```
 **Difference between function statement and function declaration**
 difference in them is Hoisting
-a()//output is a called
+```a()//output is a called
 b()//typeError
 function a(){
 console.log("a called"")
@@ -530,92 +530,97 @@ console.log("a called"")
 var b = function () {
 console.log("b called")
 }
+```
 **Anonymous Functions**
 Anonymous functions are functions that functions used as values
-function () {
+``` function () {
 
 }//syntax error function statement require a function name
 var b = function (){}
-
+```
 **Named function Expression**
 ormal function with its name assigned to a variable !!In this case you cannot call function by its name in outer scope!! (Scope Chain)
-var b = function xyz(){
+``` var b = function xyz(){
 console.log("b called");
 }
 b()//b called
 xyz()//error reference error xyz is not defined
-
+```
 **Difference between parameters and arguments**
-function a(param1,param2){
+``` function a(param1,param2){
 
 }
 var ab=a(arg1,arg2);
-
+```
 **First class functions**
 The Ability of use function as value,
-
--     Can be passed as an Argument,
--     Can be executed inside a closured function &
--     Can be taken as return form.
-         For Ex - var b = function(param){
+Can be passed as an Argument,
+Can be executed inside a closured function &
+Can be taken as return form.
+For Ex - 
+```
+var b = function(param){
                                return function xyz(){
                                        console.log(" F C F ");
                                }
                        }
-  first class Functions / first class citizens :
+```
+  **first class Functions / first class citizens :**
 
 1. used as values
 2. can be passed as argument
 3. can be executed inside a closured function
 4. can be taken as return
-5. What is Function Statement ?
+**5. What is Function Statement ?**
    A. A normal function that we create using Naming convention. & By this we can do the Hoisting.
-   For Ex - function xyz(){
+  ``` For Ex - function xyz(){
    console.log("Function Statement");
    }
-
-6. What is Function Expression ?
+````
+**6. What is Function Expression ?**
    A. When we assign a function into a variable that is Function Expression. & We can not do Hoisting by this becz it acts like variable.
-   For Ex - var a = function(){
+   ``` For Ex - var a = function(){
    console.log("Function Expression");
    }
+```
 
-7. What is Anonymous Function ?
+**7. What is Anonymous Function ?**
    A. A Function without the name is known as Anonymous Function. & It is used in a place where function are treated as value.
    For Ex - function(){
    }
 
-8. What is Named Function Expression ?
+**8. What is Named Function Expression ?**
    A. A function with a name is known as Named Function Expression.
-   For Ex - var a = function xyx(){
+  ``` For Ex - var a = function xyx(){
    console.log("Names Function Expression");
    }
-
-9. Difference b/w Parameters and Arguments ?
+```
+**9. Difference b/w Parameters and Arguments ?**
    A. When we creating a function & put some variabels in this ( ) that is our Parameters.
-   For Ex - function ab( param1, param2 ){
+   ``` For Ex - function ab( param1, param2 ){
    console.log("
    }
    & When we call this function & pass a variabel in this ( ) that is our Arguments
    For Ex - ab( 4, 5 );
-
-10. What is First Class Function Or First class citizens?
+```
+**10. What is First Class Function Or First class citizens?**
     A. The Ability of use function as value,
-
--     Can be passed as an Argument,
--     Can be executed inside a closured function &
--     Can be taken as return form.
-       For Ex - var b = function(param){
+Can be passed as an Argument,Can be executed inside a closured function &    Can be taken as return form.
+      ``` 
+      For Ex - var b = function(param){
                              return function xyz(){
                                      console.log(" F C F ");
                              }
                      }
 
+```
+
 7. Function are heart of JS. They are called first class citizens or first class functions because they have the ability to be stored in the variables, passed as parameters and arguments. They can also be returned in the function.
 
 For Revision
-Function statement / Function Declaration : the function is normally defined and can be used later on
-Function expression : the function is first created and assigned to a variable so that it can be called by its variable name and unless it is defined, it cannot be executed otherwise it throws out "Uncaught TypeError"
+
+**Function statement / Function Declaration : the function is normally defined and can be used later on**
+**Function expression : the function is first created and assigned to a variable so that it can be called by its variable name and unless it is defined, it cannot be executed otherwise it throws out "Uncaught TypeError"
 
 Anonymous function : function where there is no need to define name for the function, it just can be assigned to variable
 
