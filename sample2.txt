@@ -1,0 +1,39 @@
+Promise APIs + Interview Questions 🔥
+
+The main topic of this video is Promise APIs.
+
+02:21 promise.all takes an array of promises as input and makes parallel API calls.
+
+07:13 If any promise in the Promise.all array gets rejected, the Promise.all will throw an error, and the same error will be the output
+
+09:48 The Promise APIs all and allSettled handle the success and failure of multiple promises.
+
+15:00 Promise APIs - all, allSettled, race, any
+
+17:31 In a race between multiple promises, the first promise to settle (either resolve or reject) will determine the result.
+
+22:07 Promise.any waits for the first successful promise
+
+24:38 If all promises fail, an aggregated error will be returned.
+
+28:58 Promise APIs + Interview Questions: Explaining the functionalities of allSettled, all, race, and any
+
+31:03 Promise.all, Promise.allSettled, Promise.race, Promise.any
+
+35:14 Demonstration of using Promise APIs in JavaScript
+
+37:29 Understanding Promise.all and handling errors
+
+41:40 The promise.allSettled() method waits for all the promises to fulfill, collects all the results, and returns them.
+
+43:41 Promise object gives an array of objects with status and value for success or rejection.
+
+47:52 Understanding the lingo of promises: fulfilled, rejected, settle, success, failure
+
+49:47 Promise.any waits for the first settled promise and ignores the rest
+
+53:54 The aggregate errors in Promise APIs are returned as an array.
+
+55:57 The speaker is requesting viewers to share and appreciate the video.
+
+59:38 Promise APIs + Interview Questions
