@@ -1,20 +1,51 @@
-**How JavaScript works?**
-Ans-Everything in JavaScript happens inside an "execution context".
+# Understanding How JavaScript Works
 
-Execution context has two component
-1)memory component[variable environment]
--This is the place where all variables and functions are stored as key value pairs. eg-{key: value || n:2;}
+JavaScript operates in an "execution context," which is the environment where the code is executed. The execution context has two main components:
 
-2)code component[Thread of execution]
--This is the place where code is executed one line at a time
+### 1. Memory Component (Variable Environment)
+This is where all variables and functions are stored as key-value pairs.
 
-Note-
-\*JavaScript is a synchronous single-threaded language
+For example:
+```javascript
+{
+  key: value,
+  n: 2
+}
+```
 
--Single threaded means JavaScript can execute once command at a time
--Synchronous single-threaded that means JavaScript can execute one command at a time in a specific order.
+### 2. Code Component (Thread of Execution)
+This is where the code is executed, line by line, allowing JavaScript to process one command at a time.
 
-Call Stack in JavaScript
+**Note:** JavaScript is a synchronous, single-threaded language.
+
+- **Single-threaded** means JavaScript can execute only one command at a time.
+- **Synchronous** means that JavaScript executes code one line at a time in a specific order.
+
+## Call Stack in JavaScript
+
+The call stack is a data structure that keeps track of the functions being executed. Here’s a basic example of how it works:
+
+```javascript
+function first() {
+  console.log("First");
+}
+
+function second() {
+  console.log("Second");
+  first();
+}
+
+function third() {
+  console.log("Third");
+  second();
+}
+
+third();
+```
+
+When `third()` is called, it gets pushed onto the stack. Within `third()`, `second()` is called and added to the stack, followed by `first()`. Each function runs in a Last In, First Out (LIFO) order, where the last function called is the first to finish and be removed from the `stack`.;
+
+
 
 **How JavaScript Code is executed?**
 
