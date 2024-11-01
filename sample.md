@@ -124,28 +124,41 @@ When `third()` is called, it gets pushed onto the stack. Within `third()`, `seco
    a="hello JS";
    console.log(a);
 
-**The Scope Chain, 🔥Scope & Lexical Environment**
 
-1. Scope of a variable is directly dependent on the lexical environment.
-2. Whenever an execution context is created, a lexical environment is created. Lexical environment is the local memory along with the lexical environment of its parent. Lexical as a term means in hierarchy or in sequence.
-3. Having the reference of parent's lexical environment means, the child or the local function can access all the variables and functions defined in the memory space of its lexical parent.
-4. The JS engine first searches for a variable in the current local memory space, if its not found here it searches for the variable in the lexical environment of its parent, and if its still not found, then it searches that variable in the subsequent lexical environments, and the sequence goes on until the variable is found in some lexical environment or the lexical environment becomes NULL.
-5. The mechanism of searching variables in the subsequent lexical environments is known as Scope Chain. If a variable is not found anywhere, then we say that the variable is not present in the scope chain.
+# Scope Chain, 🔥 Scope & Lexical Environment in JavaScript
 
-0) Lexical environment = EC's Local Memory + Reference to Lexical Environment of its parent.
+### Scope of a Variable
+The scope of a variable in JavaScript is directly dependent on its **lexical environment**.
 
-1) Lexical Environment of its parent is the scope where a function is physically present or defined. So, suppose a function x(), is defined and invoked in the GEC, when function x()'s EC is pushed in the call stack, it stores a reference to its parent's lexical environment i.e. the GEC's memory.
+### Lexical Environment
+- Whenever an execution context is created, a **lexical environment** is also created.
+- A lexical environment consists of:
+  - The local memory.
+  - A reference to the lexical environment of its parent.
+- **Lexical** means in hierarchy or sequence. The child or local function can access all variables and functions defined in its parent’s lexical environment.
 
-2) Whenever a new Execution Context is pushed in the Call Stack it holds a reference to the Lexical Environment of its parent, i.e. the EC's memory from where it was invoked.
+### Scope Chain
+The **Scope Chain** is the mechanism by which JavaScript searches for a variable in its lexical environment and, if not found, continues to search through the lexical environments of its parents until it finds the variable or reaches the global scope.
 
-3) Global execution context holds reference to null.
+1. The JavaScript engine first looks for a variable in the function’s local memory.
+2. If the variable is not found, it searches in the parent’s lexical environment.
+3. The process continues through subsequent lexical environments until the variable is found or until the chain reaches **NULL** (the global execution context holds a reference to null).
+4. If the variable is not found anywhere in the scope chain, a "variable is not defined" error is thrown in the browser's console.
 
-4) Javascript engine first looks for the variable/function being accessed in the local scope of the function, and if not found, it keeps on searching the lexical environment of its parent until it finds the variable/function being accessed.
+### Lexical Environment Structure
+Each lexical environment is defined as:
+- **Lexical Environment = Execution Context's Local Memory + Reference to the Parent's Lexical Environment**
 
-5) The mechanism mentioned in point 4 above is called SCOPE CHAIN.
+### Example of Lexical Environment and Scope
+- The **lexical environment of a function's parent** refers to the scope where a function is physically defined.
+- For example, if function `x()` is defined in the **Global Execution Context (GEC)**, its execution context will hold a reference to the GEC's lexical environment when invoked.
 
-6) If the variable accessed is not found in the Scope Chain, then you will get the variable is not defined error in the browser's console.
+### Execution Context and Scope Chain
+- When a new **Execution Context** is pushed onto the Call Stack, it includes a reference to its parent’s lexical environment.
+- The **Global Execution Context (GEC)** holds a reference to `null`.
 
+The **Scope Chain** mechanism ensures that the JavaScript engine can access variables and functions up through the chain of lexical environments, adhering to a structured and sequential search hierarchy.
+`;
 **let & const in JS 🔥Temporal Dead Zone**
 
 -> let and const are hoisted. we cant use them before initialization is result of "temporal dead zone".
