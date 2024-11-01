@@ -579,13 +579,15 @@ var b = function(param){
 4. can be taken as return
 **5. What is Function Statement ?**
    A. A normal function that we create using Naming convention. & By this we can do the Hoisting.
-  ``` For Ex - function xyz(){
+  ```
+For Ex - function xyz(){
    console.log("Function Statement");
    }
 ````
 **6. What is Function Expression ?**
    A. When we assign a function into a variable that is Function Expression. & We can not do Hoisting by this becz it acts like variable.
-   ``` For Ex - var a = function(){
+   ```
+ For Ex - var a = function(){
    console.log("Function Expression");
    }
 ```
@@ -597,13 +599,15 @@ var b = function(param){
 
 **8. What is Named Function Expression ?**
    A. A function with a name is known as Named Function Expression.
-  ``` For Ex - var a = function xyx(){
+  ```
+ For Ex - var a = function xyx(){
    console.log("Names Function Expression");
    }
 ```
 **9. Difference b/w Parameters and Arguments ?**
    A. When we creating a function & put some variabels in this ( ) that is our Parameters.
-   ``` For Ex - function ab( param1, param2 ){
+   ```
+ For Ex - function ab( param1, param2 ){
    console.log("
    }
    & When we call this function & pass a variabel in this ( ) that is our Arguments
