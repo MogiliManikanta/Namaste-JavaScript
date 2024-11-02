@@ -1,5 +1,5 @@
-// objects in javascript
-
+# objects in javascript
+```
 const user = {
   name: "roadsidecoder",
   age: 22,
@@ -18,8 +18,10 @@ const func = (function (a) {
   return a;
 })(10);
 console.log(func);
+```
 
-// computed properties
+# computed properties
+```
 const property = "firstname";
 const name = "Manikanta";
 
@@ -43,10 +45,11 @@ const obj = {
 console.log(obj);
 //output
 // {a:'three', b :'two'}
+```
 
 //output2 :
-// create a function multiplyByTwo(obj) that multiplies all numeric property values of nums by 2.
-
+# create a function multiplyByTwo(obj) that multiplies all numeric property values of nums by 2.
+```
 let nums = {
   a1: 100,
   b1: 200,
@@ -62,9 +65,9 @@ function multiplyByTwo(obj) {
   return obj;
 }
 console.log(multiplyByTwo(nums));
-
-//output of the following code
-
+```
+# output of the following code
+```
 const a = {};
 const b = { key: "b" };
 const c = { key: "c" };
@@ -78,9 +81,10 @@ a["[object Object]"] = 123;
 a["[object Object]"] = 456;
 
 console.log(a["[object Object]"]); //456
+```
 
-// what's JSON.stringify and JSON.parse ?
-
+# what's JSON.stringify and JSON.parse ?
+```
 const user = {
   name: "Piyush",
   age: 24,
@@ -98,7 +102,8 @@ console.log(localStorage.getItem("test"));
 console.log([..."Lydia"]);
 
 // ['L', 'y', 'd', 'a']
-
+```
+```
 const user = { name: "Manikanta", age: 22 };
 const admin = { admin: true, ...user };
 
@@ -126,8 +131,10 @@ const shape = {
 
 console.log(shape.diameter()); // 20
 console.log(shape.perimeter()); //in arrow methods this refers to gloabal object means window object => undefined
+```
 
-// destructuring in objects
+# destructuring in objects
+```
 let user = {
   name1: "manikanta",
   age: 24,
@@ -145,14 +152,16 @@ const {
 console.log(first); //Manikanta
 
 //output
-
+```
+```
 function getItems(fruitList, favoriteFruit, ...args) {
   return [...fruitList, ...args, favoriteFruit];
 }
 
 console.log(getItems(["apple", "banana"], "orange", "grapes", "mango"));
 // ['apple', 'banana', 'orange', 'grapes', 'mango']
-
+```
+```
 let c1 = { greeting: "hello" };
 
 let d;
@@ -160,10 +169,12 @@ d = c1; // we are sharing reference
 c.greeting = "hi"; // we are changing the value d will also change
 
 console.log(d.greeting); // heelo
-
+```
+```
 console.log({ a: 1 } == { a: 1 }); //false
 // console.log({ a: 1 } === { a: 1 }); //false
-
+```
+```
 let person = { name: "Lydia" };
 const members = [person];
 person = null;
@@ -172,7 +183,8 @@ console.log(members); // print the array
 //output
 person.name = null;
 console.log(members); // print the null
-
+```
+```
 const value = {number : 10};
 
 const multiply = (x={...value})=>{
@@ -183,7 +195,8 @@ multiply();//20
 multiply();//20
 multiply(value);//20 but it will change the value number to 20
 multiply(value);//40
-
+```
+```
 function changeAgeAndReference(person){
     person.age=25;
     person = {
@@ -205,11 +218,12 @@ const personObj2 = changeAgeAndReference(personObj1);
 console.log(personObj1); // {name: "alex", age: 25}
 console.log(personObj2);// {name: "john", age: 50}
 
+```
+**shallow copy**
+**deep copy**
 
-//shallow copy
-//deep copy
-
-//clone an object
+**clone an object**
+```
 let user = {
     name : "manikanta",
     age : 24,
@@ -223,3 +237,4 @@ console.log(objClone);//{ name: 'vishal', age: 24 }
 
 const objClone1 = JSON.parse(JSON.stringify(user));
 const objClone2 = {...user};
+```
