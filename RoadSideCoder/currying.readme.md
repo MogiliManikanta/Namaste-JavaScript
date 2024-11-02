@@ -1,15 +1,16 @@
-// 1.why should we use currying?
-// Following are the reasons why currying is good :
+# 1.why should we use currying?
+ - Following are the reasons why currying is good :
 
-// ✅ It makes a function pure which makes it expose to less errors and side effects.
+- ✅ It makes a function pure which makes it expose to less errors and side effects.
 
-// ✅ It helps in avoiding the same variable again and again.
+- ✅ It helps in avoiding the same variable again and again.
 
-// ✅ It is a checking method that checks if you have all the things before you proceed.
+- ✅ It is a checking method that checks if you have all the things before you proceed.
 
-// ✅ It divides one function into multiple functions so that one handles one set of responsibility.
+-  ✅ It divides one function into multiple functions so that one handles one set of responsibility.
 
-// sum(1)(2)(3)
+```
+ sum(1)(2)(3)
 
 function sum(a) {
   return function (b) {
@@ -20,8 +21,9 @@ function sum(a) {
 }
 
 console.log(sum(2)(3)(4));
-
-// evaluate("sum")(1)(2)(3);
+```
+```
+ evaluate("sum")(1)(2)(3);
 // evaluate("subtract")(1)(2)(3);
 // evaluate("multiply")(1)(2)(3);
 // evaluate("divide")(1)(2)(3)
@@ -118,3 +120,4 @@ const sum = (a, b, c, d) => a + b + c + d;
 const totalSum = curry(sum);
 
 console.log(totalSum(1)(2)(3)(4));
+```
