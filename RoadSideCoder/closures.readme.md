@@ -1,5 +1,5 @@
-// 1. what will be logged to console
-
+#  1. what will be logged to console
+```
 let count = 0;
 (function printCount() {
   if (count === 0) {
@@ -8,9 +8,9 @@ let count = 0;
   }
   console.log(count); //0
 })();
-
-// 2.write a function that would allow you to do this
-
+```
+# 2.write a function that would allow you to do this
+```
 var addSix = createbase(6);
 addSix(10); // return 16
 addSix(21); // return 27
@@ -22,9 +22,9 @@ function createbase(x) {
     console.log(x + y);
   };
 }
-
-//3. Time Optimization
-
+```
+# 3. Time Optimization
+```
 function find() {
   let a = [];
   for (let i = 0; i < 1e5; i++) {
@@ -59,9 +59,9 @@ console.timeEnd("6");
 console.time("50");
 closure(50);
 console.timeEnd("50");
-
-///  how would you create a closure function that would have access to the global scope?
-
+```
+#  how would you create a closure function that would have access to the global scope?
+```
 function outer() {
   let count = 0;
   function inner() {
@@ -75,9 +75,9 @@ const closure1 = outer();
 closure1();
 closure1();
 closure1();
-
-// how would you use a closure to create a private counter?
-
+```
+# how would you use a closure to create a private counter?
+```
 function counter() {
   var _count = 0;
 
@@ -98,9 +98,9 @@ const c = counter();
 c.add(5);
 c.add(10);
 console.log(c.retrieve());
-
-// Module pattern
-
+```
+# Module pattern
+```
 var Module = (function () {
   function privateMethod() {
     console.log("private");
@@ -115,8 +115,9 @@ var Module = (function () {
 
 Module.publicMethod();
 Module.privateMethod();
-
-//make this run only once
+```
+ # make this run only once
+ ```
 let view;
 function likeTheVideo() {
   view = "Roadside coder";
@@ -166,9 +167,9 @@ hello();
 hello();
 hello();
 hello();
-
-// implement caching/memoize function
-
+```
+# implement caching/memoize function
+```
 const clumsysquare = (num1, num2) => {
   for (let i = 1; i <= 1e6; i++) {}
   return num1 * num2;
@@ -207,5 +208,5 @@ console.timeEnd("First call");
 console.time("Second call");
 console.log(memoizedClumsyProduct(9467, 7649));
 console.timeEnd("Second call");
-
+```
 //difference between closure and scope
