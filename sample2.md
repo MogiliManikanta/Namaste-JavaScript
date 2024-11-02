@@ -1,11 +1,11 @@
-Callback Hell | Ep 01 Season 02 - Namaste JavaScript
+# Callback Hell | Ep 01 Season 02 - Namaste JavaScript
 Two issues while using callbacks
 
-1 - Callback hell
+**1 - Callback hell**
 When a function is passed as an argument to another function, it becomes a callback function. This process continues and there are many callbacks inside another's Callback function.
 This grows the code horizontally instead of vertically. That mechanism is known as callback hell.
 
-2 - Inversion of control
+**2 - Inversion of control**
 The callback function is passed to another callback, this way we lose the control of our code. We don't know what is happening behind the scene and the program becomes very difficult to maintain.
 That process is called inversion of control.
 
@@ -52,15 +52,15 @@ Before promise we used to depend on callback functions which have two disadvanta
    c) They give us the result prompt in three states: 1) Pending 2) Fulfilled 3) Rejected
    d) We can attach function to promise object and retrieve its value unlike callbacks no need to pass the function.
    e) Nesting can be done in Promises and with the help of that we can return the values in each individual chain.
-
+```
 createOrder(cart)
 .then(() => placeOrder(cart))
 .then(() => shipOrder(cart))
 .then(() => deliverOrder(cart))
 .then(() => returnOrder(cart))
-
+```
 **Creating a Promise, Chaining & Error Handling**
-
+```
 const cart =["shoes","pants","kurta"];
 
 const promise = createOrder(cart);
@@ -95,7 +95,7 @@ return pr;
 function validateCart(cart){
 return true;
 }
-
+```
 1. Promise can be created using a new Promise() constructor function.
 2. This constructor function takes a callback function as argument.
 3. The callback function has 2 arguments named 'resolve' and 'reject'. Resolve and reject are the keywords provided by JS.
@@ -109,7 +109,7 @@ return true;
 11. If it returns a value => It will be used as an argument in next function. If it is a promise then the next .then in the promise chain is attached to the promise returned by the current callback function.
 
 Homework:
-
+```
 const cart = ['shoes', 'pants', 'kurta'];
 
 createOrder(cart)
@@ -207,3 +207,4 @@ console.log(res);
 .catch((err)=>{
 console.log(err);
 })
+```
