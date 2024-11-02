@@ -1,6 +1,7 @@
-//polyfill for reduce method
+**polyfill for reduce method**
 
-// arr.reduce((acc,curr,i,arr)=>{},initialValue)
+**arr.reduce((acc,curr,i,arr)=>{},initialValue)**
+```
 
 Array.prototype.myReduce = function (callback, initialValue) {
   let accumulator = initialvalue;
@@ -19,3 +20,5 @@ const sum = nums.myReduce((acc, num, i, arr) => {
 }, 0);
 
 console.log(sum);
+
+```
